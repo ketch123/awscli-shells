@@ -1,0 +1,1 @@
+aws ec2 describe-instances --filter Name=tag:$1,Values=$2 | jq -c  '.["Reservations"][] | .["Instances"][] | { id: .["InstanceId"], status: .["State"]["Name"], public_ip: .["PublicIpAddress"], private_ip: .["PrivateIpAddress"]}'
